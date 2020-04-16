@@ -1,0 +1,54 @@
+{
+    "manifestVersion": 1,
+    "id": "happiness-tracker",
+    "publisher": "PabloPrezCamarena",
+    "version": "0.1.7",
+    "name": "Happiness Tracker",
+    "description": "An extension to keep track of the team members happiness after the retrospectives.",
+    "public": false,
+    "categories": ["Azure Repos"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "static/images/logo.png"
+     },
+     "tags":[
+         "Agile",
+         "Retrospective",
+         "Happiness"
+     ],
+    "contributions": [
+        {
+            "id": "main",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "properties": {
+                "name": "Happiness Tracker",
+                "uri": "main.html",
+                "icon": "static/images/smile.png"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true,
+            "packagePath": "tracker"
+        },
+        {
+            "path": "static",
+            "addressable": true,
+            "packagePath": "/"
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ]
+}

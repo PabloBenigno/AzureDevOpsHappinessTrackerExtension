@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "moduleResolution": "node",
+        "target": "es5",
+        "outDir": "dist/",
+        "types": [
+            "vss-web-extension-sdk"
+        ]
+    },
+    "files": [
+        "src/tracker/main.ts"
+    ]
+}
