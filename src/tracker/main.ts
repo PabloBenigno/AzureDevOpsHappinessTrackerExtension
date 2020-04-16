@@ -1,6 +1,4 @@
-var getUserName = (function () {
+function getUserName () {
     "use strict";
     return VSS.getWebContext().user.name;
-}());
-
-VSS.register("getUserName", getUserName);
+};

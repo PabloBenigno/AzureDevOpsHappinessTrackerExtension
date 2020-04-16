@@ -2,16 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <script src="lib/VSS.SDK.min.js"></script>
+    <script src="tracker/main.js"></script>
     <link rel="stylesheet" href="css/main.css" /> 
     <script type="text/javascript">
         VSS.init();
         VSS.ready(function() {
-            document.getElementById("name").innerText = VSS.getWebContext().user.name;
+            document.getElementById("name").innerText = getUserName();
         });
-
-        // Wait for the SDK to be initialized then load a script
-        VSS.require(["tracker/main"], function (items) { });
-
+        
     </script>
 </head>
 <body>        
