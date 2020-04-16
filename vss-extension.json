@@ -2,11 +2,11 @@
     "manifestVersion": 1,
     "id": "happiness-tracker",
     "publisher": "PabloPrezCamarena",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "name": "Happiness Tracker",
     "description": "An extension to keep track of the team members happiness after the retrospectives.",
     "public": false,
-    "categories": ["Insights"],
+    "categories": ["Collaborate"],
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
@@ -30,7 +30,7 @@
             "properties": {
                 "name": "Happiness Tracker",
                 "uri": "main.html",
-                "icon": "static/images/smile.png"
+                "icon": "images/smile.png"
             }
         }
     ],
