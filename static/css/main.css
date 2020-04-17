@@ -24,3 +24,9 @@
 	font-family: "Segoe UI Light", "Segoe UI", sans-serif;
 	font-size: 14px;
 }
+
+#text_table {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+}

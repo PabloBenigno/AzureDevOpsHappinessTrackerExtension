@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "happiness-tracker",
     "publisher": "PabloPrezCamarena",
-    "version": "0.1.17",
+    "version": "0.1.42",
     "name": "Happiness Tracker",
     "description": "An extension to keep track of the team members happiness after the retrospectives.",
     "public": false,

@@ -8,14 +8,39 @@
         VSS.init();
         VSS.ready(function() {
             document.getElementById("name").innerText = getUserName();
+
+            VSS.require(["TFS/Core/RestClient"], function () 
+            { 
+                var RestClient = require("TFS/Core/RestClient");
+                var client = RestClient.getClient();
+                var ctx = VSS.getWebContext();
+                client.getTeamMembersWithExtendedProperties(ctx.project.id, ctx.team.id, 10, 0).then(function(value){
+                    console.log(value);
+
+                    var textTable = document.getElementById("text_table");
+                    var nHTML = '';
+                    for (var i = 0; i < value.length; i++) {
+                        nHTML = '<div>' + value[i].identity.displayName + '</div>';
+                    }
+                    textTable.innerHTML = nHTML;
+                },
+                function(reason){
+                    console.log(reason);
+                });
+            });
         });
         
+        
+
+        VSS.require(["tracker/main"], function () 
+        { 
+            //console.log(getTeamMembers());
+        });
     </script>
 </head>
 <body>        
     <h1>Welcome to the Happiness tracker <span id="name"></span>!</h1>
-    <div>
-        
-    </div>
+    <h2>Users list:</h2>
+    <div id="text_table"></div>
 </body>
 </html>
