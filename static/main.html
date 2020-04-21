@@ -9,14 +9,15 @@
         VSS.ready(function() {
             document.getElementById("name").innerText = getUserName();
 
-            VSS.require(["TFS/Core/RestClient"], function () 
+            VSS.require(["TFS/Core/RestClient", "TFS/Work/RestClient"], function () 
             { 
-                var RestClient = require("TFS/Core/RestClient");
-                var client = RestClient.getClient();
-                var ctx = VSS.getWebContext();
-                client.getTeamMembersWithExtendedProperties(ctx.project.id, ctx.team.id, 10, 0).then(function(value){
-                    console.log(value);
+                var CoreClientFactory = require("TFS/Core/RestClient");
+                var WorkClientFactory = require("TFS/Work/RestClient");
+                var coreClient = CoreClientFactory.getClient();
+                var workClient = WorkClientFactory.getClient();
 
+                var ctx = VSS.getWebContext();
+                coreClient.getTeamMembersWithExtendedProperties(ctx.project.id, ctx.team.id, 10, 0).then(function(value){
                     var textTable = document.getElementById("text_table");
                     var nHTML = '';
                     for (var i = 0; i < value.length; i++) {
@@ -27,20 +28,46 @@
                 function(reason){
                     console.log(reason);
                 });
+
+                var teamContext = ctx.team;
+
+                workClient.getTeamIterations(teamContext, null).then(function(value){
+                    var sprintInput = document.getElementById("sprint_input");
+                    console.log(value);
+                    sprintInput.innerHTML = value[0].id;
+                },
+                function(reason){
+                    console.log(reason);
+                });
+                
             });
         });
-        
-        
 
-        VSS.require(["tracker/main"], function () 
-        { 
-            //console.log(getTeamMembers());
-        });
+        // VSS.require(["tracker/main"], function () 
+        // { 
+        //     //console.log(getTeamMembers());
+        // });
     </script>
 </head>
 <body>        
     <h1>Welcome to the Happiness tracker <span id="name"></span>!</h1>
     <h2>Users list:</h2>
     <div id="text_table"></div>
+    <label for="sprint_input">Sprint number: </label>
+    <input type="number" id="sprint_input"><br>
+    <label for="happiness">Happiness: </label>
+    <select id="happiness">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+        
 </body>
 </html>
